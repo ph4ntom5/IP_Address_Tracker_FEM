@@ -34,9 +34,12 @@ const IPinput = styled.input`
   cursor: pointer;
   padding-right: 6rem;
   border-radius: 0.8rem;
-
   &:focus {
     outline: none;
+  }
+  ::placeholder {
+    padding-left: 1rem;
+    color: red;
   }
 `;
 
@@ -57,16 +60,38 @@ const IPButton = styled.button`
   &
 `;
 
+const DetailsWrap = styled.section`
+  background-color: white;
+  width: 80%;
+  height: 20rem;
+`;
+// Pull from Different Sources
+
+const apify_api = "at_1S0G0pXccyH8NVUBuEvJxg6y86oU5";
+
+// Elements to Update
+
+let current_ip = document.getElementById("current_ip");
+let current_city = document.getElementById("current_city");
+let current_zone = document.getElementById("current_zone");
+let current_isp = document.getElementById("current_isp");
+
+// Form Elements
+
+const input_ip = document.getElementById("input_ip");
+const sub_btn = document.getElementById("sub_btn");
+
 const Hero = () => {
   return (
     <>
       <Wrapper>
         <Title>IP Address Tracker</Title>
         <Form>
-          <IPinput></IPinput>
+          <IPinput placeholder="Search for any IP address"></IPinput>
           <IPButton></IPButton>
         </Form>
       </Wrapper>
+      <DetailsWrap></DetailsWrap>
     </>
   );
 };
