@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components/macro";
 import pattern from "../images/pattern-bg.png";
 import arrowicon from "../images/icon-arrow.svg";
+import axios from "axios";
 const Wrapper = styled.div`
   width: 100%;
   height: 300px;
@@ -65,9 +66,6 @@ const DetailsWrap = styled.section`
   width: 80%;
   height: 20rem;
 `;
-// Pull from Different Sources
-
-const apify_api = "at_1S0G0pXccyH8NVUBuEvJxg6y86oU5";
 
 // Elements to Update
 
@@ -81,13 +79,33 @@ let current_isp = document.getElementById("current_isp");
 const input_ip = document.getElementById("input_ip");
 const sub_btn = document.getElementById("sub_btn");
 
+// Show users IP on load
+
+function YourIP() {
+  const [localIP, setlocalIP] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://geo.ipify.org/api/v1?apiKey=at_1S0G0pXccyH8NVUBuEvJxg6y86oU5&ipAddress=8.8.8.8"
+      )
+      .then((response) => {
+        console.log(response.data.result);
+        setlocalIP(response.data.result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+}
+
 const Hero = () => {
   return (
     <>
       <Wrapper>
         <Title>IP Address Tracker</Title>
         <Form>
-          <IPinput placeholder="Search for any IP address"></IPinput>
+          <IPinput placeholder="Search for any IP address">{localIP}</IPinput>
           <IPButton></IPButton>
         </Form>
       </Wrapper>
