@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 import pattern from "../images/pattern-bg.png";
 import arrowicon from "../images/icon-arrow.svg";
 import axios from "axios";
+
 const Wrapper = styled.div`
   width: 100%;
   height: 300px;
@@ -22,7 +23,7 @@ const Title = styled.h1`
 const Form = styled.section`
   position: relative;
   height: 100px;
-  width: 25rem;
+  width: 45rem;
   margin: 0 auto;
   margin-top: 2rem;
 `;
@@ -40,7 +41,8 @@ const IPinput = styled.input`
   }
   ::placeholder {
     padding-left: 1rem;
-    color: red;
+    color: gray;
+    font-size: 1rem;
   }
 `;
 
@@ -55,16 +57,10 @@ const IPButton = styled.button`
   position: absolute;
   cursor: pointer;
   border-radius: 0 0.8rem 0.8rem 0;
-  right: 0;
+  right: 5rem;
   top: 0;
   bottom: 0;
   &
-`;
-
-const DetailsWrap = styled.section`
-  background-color: white;
-  width: 80%;
-  height: 20rem;
 `;
 
 // Elements to Update
@@ -105,11 +101,10 @@ const Hero = () => {
       <Wrapper>
         <Title>IP Address Tracker</Title>
         <Form>
-          <IPinput placeholder="Search for any IP address">{localIP}</IPinput>
+          <IPinput placeholder="Search for any IP address or domain"></IPinput>
           <IPButton></IPButton>
         </Form>
       </Wrapper>
-      <DetailsWrap></DetailsWrap>
     </>
   );
 };
