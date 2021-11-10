@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { MapContainer as LeafletMap, TileLayer } from "react-leaflet";
 import styled from "styled-components/macro";
 
@@ -7,14 +7,23 @@ const Wrapper = styled.section`
   z-index: 2;
 `;
 
-const Map = () => {
-  const position = [56.26, 9.5];
+const Maps = () => {
+  const defaultPos = [55.67, 12.56];
+
+  const mapRef = useRef();
+  useEffect(() => {
+    const { current = {} } = mapRef;
+    const { leafletElement: map } = current;
+
+    // read browser location ,creates error// map.locate({ setView: true });
+  }, []);
 
   return (
     <Wrapper>
       <LeafletMap
-        center={position}
-        zoom={8}
+        ref={mapRef}
+        center={defaultPos}
+        zoom={12}
         className="map"
         style={{
           height: "670px",
@@ -32,4 +41,4 @@ const Map = () => {
   );
 };
 
-export default Map;
+export default Maps;
