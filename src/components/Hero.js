@@ -17,6 +17,7 @@ const Title = styled.h1`
   font-weight: 600;
   padding-top: 2rem;
   margin: 0;
+  padding-top: 4rem;
 `;
 
 const Form = styled.section`
@@ -59,7 +60,10 @@ const IPButton = styled.button`
   right: 5rem;
   top: 0;
   bottom: 0;
-  &
+  &:hover {
+    background-color: #3f3f3f;
+    transition-duration: 0.5s;
+  }
 `;
 
 const Hero = ({ isp }) => {
